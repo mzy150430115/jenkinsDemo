@@ -9,9 +9,16 @@ pipeline {
         }
         stage('build project') {
             steps {
-                 sh 'mvn clean package'
+                 sh "if (ps -ef| grep jdemo-0.0.1-SNAPSHOT.war|grep -v grep)then (ps -ef| jdemo-0.0.1-SNAPSHOT.war|grep -v grep | awk '{print \$2}'|xargs kill -9) fi"
+
+                 sh "mvn clean package "
+
+                 sh "export BUILD_ID='dontKillMe'"
+                 sh "JENKINS_NODE_COOKIE=dontKillMe nohup java -jar /target/jdemo-0.0.1-SNAPSHOT.war &"
             }
         }
+
+
     }
 
 }
