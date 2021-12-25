@@ -14,7 +14,7 @@ pipeline {
                  sh "mvn clean package "
 
                  sh "export BUILD_ID='dontKillMe'"
-                 sh "JENKINS_NODE_COOKIE=dontKillMe nohup java -jar /target/jdemo-0.0.1-SNAPSHOT.war &"
+                 sh "JENKINS_NODE_COOKIE=dontKillMe nohup java -jar /root/.jenkins/workspace/test03/target/jdemo-0.0.1-SNAPSHOT.war &"
             }
         }
 
