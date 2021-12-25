@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     @RequestMapping("/hello")
     public String getHello(){
-        return "hello world 2021年12月25日 12:09:32";
+        return "hello world 2021年12月25日 12:42:49";
     }
 }
