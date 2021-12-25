@@ -9,7 +9,10 @@ pipeline {
         }
         stage('build project') {
             steps {
-                 sh "if (ps -ef| grep jdemo-0.0.1-SNAPSHOT.war|grep -v grep)then (ps -ef| jdemo-0.0.1-SNAPSHOT.war|grep -v grep | awk '{print \$2}'|xargs kill -9) fi"
+                 sh "  if [ `ps -ef | grep jdemo-0.0.1 | awk '{print $2}'` ];then
+                             . .venv/bin/activate
+                     		ps -ef | grep jdemo-0.0.1 | awk '{print $2}' | xargs kill -9
+                         fi"
 
                  sh "mvn clean package "
 
