@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('pull code') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '51735b31-e4cc-475d-8b5e-a7d4cb4c5e5c', url: 'git@github.com:mzy150430115/jenkinsDemo.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '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', url: 'git@github.com:mzy150430115/jenkinsDemo.git']]])
             }
         }
         stage('build project') {
@@ -14,7 +14,7 @@ pipeline {
                  sh "mvn clean package "
 
                  sh "export BUILD_ID='dontKillMe'"
-                 sh "JENKINS_NODE_COOKIE=dontKillMe nohup java -jar /root/.jenkins/workspace/test03/target/jdemo-0.0.1-SNAPSHOT.war &"
+                 sh "JENKINS_NODE_COOKIE=dontKillMe nohup java -jar /root/.jenkins/workspace/test01/target/jdemo-0.0.1-SNAPSHOT.war &"
             }
         }
 
