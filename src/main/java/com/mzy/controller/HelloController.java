@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     @RequestMapping("/hello")
     public String getHello(){
-            return "hello world 2021.1.10";
+            return "hello world 2021.1.5";
     }
 }
